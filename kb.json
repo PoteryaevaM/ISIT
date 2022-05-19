@@ -1,0 +1,777 @@
+{
+  "rules" : {
+    "determine-inet-works" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "inet-works",
+        "question" : "Does the internet work? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+    "determine-ping-8" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "ping-8.8.8.8",
+        "question" : "Can you sucessfully ping 8.8.8.8 (yes/no/with_losses)? ",
+        "value" : ["yes", "no", "with_losses"]
+      }
+    },
+
+     "determine-nic-link" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-nic-link",
+        "question" : "Does the link indicator on your NIC light (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-cable-state" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-nic-link",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-cable-state",
+        "question" : "Is the cable OK (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-rj45-state" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-nic-link",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-rj45-state",
+        "question" : "Is the RJ45 connector OK (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-net-settings" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-nic-link",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-net-settings",
+        "question" : "Do PC network settings match the values from information list (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-ping-ya.ru" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-ping-ya.ru",
+        "question" : "Can you sucessfully ping ya.ru (yes/no)?  ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-dns-settings" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "ping-8.8.8.8",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-ping-ya.ru",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-dns-settings",
+        "question" : "Are PC DNS settings correct (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-slow-web" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-slow-web",
+        "question" : "Do internet pages open slowly (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+  "determine-slow-speed" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-slow-web",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-slow-speed",
+        "question" : "Please measure your internet speed. Is it much slower than is specified by your tariff (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+     "determine-losses" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "inet-works",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-slow-web",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "and"
+        },
+        {
+          "fact" : "determine-slow-speed",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+      "qonsequent" : {
+        "fact" : "determine-losses",
+        "question" : "Please ping 8.8.8.8. Do you have losses in transmission (yes/no)? ",
+        "value" : ["yes", "no"]
+      }
+    },
+
+    "rj45-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-rj45-state",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["You need to replace RJ45 connector on your cable"]
+      }
+    },
+
+     "cable-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-cable-state",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["You need to replace your network cable"]
+      }
+    },
+
+     "pc-settings-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-net-settings",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["You need to change your PC network settings according to information list"]
+      }
+    },
+
+     "isp-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-dns-settings",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["There is a problem on the ISP side"]
+      }
+    },
+
+    "pc-dns-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-dns-settings",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["You need to change your PC DNS settings according to information list"]
+      }
+    },
+
+    "no-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-slow-web",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["Your Internet connection is fine"]
+      }
+    },
+
+    "pc-virus-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-losses",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["There is a problem with your PC. Please, check your system with an antivirus and disable any other software that may consume Internet bandwidth"]
+      }
+    },
+
+     "browser-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-slow-speed",
+          "parameter" : {
+            "required" : true,
+            "value" : "no"
+          }
+        },
+         {
+          "fact" : "or"
+        },
+        {
+          "fact" : "determine-ping-ya.ru",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["There is a problem with your browser. Please reinstall it or try another one"]
+      }
+    },
+
+     "last-mile-problem" : {
+      "antecedent" : [
+        {
+          "fact" : "repair",
+          "parameter" : {
+            "required" : false,
+            "value" : null
+          }
+        },
+        {
+          "fact" : "not"
+        },
+        {
+          "fact" : "determine-cable-state",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "or"
+        },
+        {
+          "fact" : "determine-rj45-state",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+        {
+          "fact" : "or"
+        },
+        {
+          "fact" : "determine-ping-8",
+          "parameter" : {
+            "required" : true,
+            "value" : "with_losses"
+          }
+        },
+        {
+          "fact" : "or"
+        },
+        {
+          "fact" : "determine-net-settings",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "or"
+        },
+        {
+          "fact" : "determine-losses",
+          "parameter" : {
+            "required" : true,
+            "value" : "yes"
+          }
+        },
+         {
+          "fact" : "and"
+        }
+      ],
+       "qonsequent" : {
+        "fact" : "repair",
+        "value" : ["There is a problem on a last mile. You need to call a technician to determine exact point of failure and fix it"]
+      }
+    }
+  }
+}
