@@ -2,17 +2,17 @@
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-import json # Импорт модуля для работы с файлом, где будет записаны правила
+import json
 
 class Facts_Bank:
-    ops = { # Cоздание словаря
+    ops = { #
         'and': [2, lambda x, y: x and y],
         'or': [2, lambda x, y: x or y],
         'not': [1, lambda x: not x]
     }
 
     def __init__(self):
-        self.working_space = {}  # fact:parameter
+        self.working_space = {}
         self.__last_fact = None
 
     def is_true(self, antecedent):
@@ -58,9 +58,9 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    with open('kb.json', 'r') as kb_file: # Открытие файла для чтения при помощи файлового потока
-        rules = json.load(kb_file)['rules'] # Парсинг json файла
-        fb = Facts_Bank() # Инициализация класса
+    with open('kb.json', 'r') as kb_file:
+        rules = json.load(kb_file)['rules']
+        fb = Facts_Bank()
         used_rules=[]
         while True: # Цикл для обработки
             accepted_rules = []

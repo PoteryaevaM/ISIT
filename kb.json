@@ -57,9 +57,9 @@
         }
       ],
       "qonsequent" : {
-        "fact" : "ping-8.8.8.8",
-        "question" : "Can you sucessfully ping 8.8.8.8 (yes/no/with_losses)? ",
-        "value" : ["yes", "no", "with_losses"]
+        "fact" : "determine-ping-8",
+        "question" : "Can you sucessfully ping 8.8.8.8 (yes/no)? ",
+        "value" : ["yes", "no"]
       }
     },
 
@@ -86,7 +86,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "no"
@@ -126,7 +126,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "no"
@@ -176,7 +176,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "no"
@@ -226,7 +226,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "no"
@@ -276,7 +276,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "yes"
@@ -316,7 +316,7 @@
           "fact" : "and"
         },
         {
-          "fact" : "ping-8.8.8.8",
+          "fact" : "determine-ping-8",
           "parameter" : {
             "required" : true,
             "value" : "yes"
@@ -720,7 +720,7 @@
         {
           "fact" : "determine-cable-state",
           "parameter" : {
-            "required" : true,
+            "required" : false,
             "value" : "yes"
           }
         },
