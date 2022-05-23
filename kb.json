@@ -248,7 +248,7 @@
       ],
       "qonsequent" : {
         "fact" : "determine-net-settings",
-        "question" : "Do PC network settings match the values from information list (yes/no)? ",
+        "question" : "Do PC network  settings match the values from information list (yes/no)? ",
         "value" : ["yes", "no"]
       }
     },

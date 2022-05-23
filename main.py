@@ -1,11 +1,10 @@
 # This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import json
 
 class Facts_Bank:
-    ops = { #
+    ops = {
         'and': [2, lambda x, y: x and y],
         'or': [2, lambda x, y: x or y],
         'not': [1, lambda x: not x]
